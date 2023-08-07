@@ -1,0 +1,423 @@
+[{
+  "inputs": [{
+    "internalType": "address",
+    "name": "_Hera",
+    "type": "address"
+  }, {
+    "internalType": "uint16",
+    "name": "_depositeFeeBP",
+    "type": "uint16"
+  }, {
+    "internalType": "uint16",
+    "name": "_withdrawFeeBP",
+    "type": "uint16"
+  }, {
+    "internalType": "contract IReferral",
+    "name": "_referral",
+    "type": "address"
+  }, {
+    "internalType": "uint256",
+    "name": "_startBlock",
+    "type": "uint256"
+  }],
+  "stateMutability": "nonpayable",
+  "type": "constructor"
+}, {
+  "anonymous": false,
+  "inputs": [{
+    "indexed": true,
+    "internalType": "address",
+    "name": "user",
+    "type": "address"
+  }, {
+    "indexed": false,
+    "internalType": "uint256",
+    "name": "amount",
+    "type": "uint256"
+  }, {
+    "indexed": false,
+    "internalType": "address",
+    "name": "referrer",
+    "type": "address"
+  }],
+  "name": "Deposit",
+  "type": "event"
+}, {
+  "anonymous": false,
+  "inputs": [{
+    "indexed": true,
+    "internalType": "address",
+    "name": "previousOwner",
+    "type": "address"
+  }, {
+    "indexed": true,
+    "internalType": "address",
+    "name": "newOwner",
+    "type": "address"
+  }],
+  "name": "OwnershipTransferred",
+  "type": "event"
+}, {
+  "anonymous": false,
+  "inputs": [{
+    "indexed": true,
+    "internalType": "address",
+    "name": "user",
+    "type": "address"
+  }, {
+    "indexed": true,
+    "internalType": "address",
+    "name": "referrer",
+    "type": "address"
+  }, {
+    "indexed": false,
+    "internalType": "uint256",
+    "name": "commissionAmount",
+    "type": "uint256"
+  }],
+  "name": "ReferralCommissionPaid",
+  "type": "event"
+}, {
+  "anonymous": false,
+  "inputs": [{
+    "indexed": false,
+    "internalType": "uint16",
+    "name": "depositFeeBP",
+    "type": "uint16"
+  }, {
+    "indexed": false,
+    "internalType": "uint16",
+    "name": "withdrawFeeBP",
+    "type": "uint16"
+  }],
+  "name": "Set",
+  "type": "event"
+}, {
+  "anonymous": false,
+  "inputs": [{
+    "indexed": true,
+    "internalType": "address",
+    "name": "user",
+    "type": "address"
+  }, {
+    "indexed": true,
+    "internalType": "contract IReferral",
+    "name": "newAddress",
+    "type": "address"
+  }],
+  "name": "SetReferralAddress",
+  "type": "event"
+}, {
+  "anonymous": false,
+  "inputs": [{
+    "indexed": true,
+    "internalType": "uint256",
+    "name": "referralCommissionRate",
+    "type": "uint256"
+  }],
+  "name": "SetReferralCommissionRate",
+  "type": "event"
+}, {
+  "anonymous": false,
+  "inputs": [{
+    "indexed": true,
+    "internalType": "uint256",
+    "name": "startBlock",
+    "type": "uint256"
+  }],
+  "name": "UpdateStartBlock",
+  "type": "event"
+}, {
+  "anonymous": false,
+  "inputs": [{
+    "indexed": true,
+    "internalType": "address",
+    "name": "user",
+    "type": "address"
+  }, {
+    "indexed": false,
+    "internalType": "uint256",
+    "name": "amount",
+    "type": "uint256"
+  }],
+  "name": "Withdraw",
+  "type": "event"
+}, {
+  "inputs": [],
+  "name": "Hera",
+  "outputs": [{
+    "internalType": "address",
+    "name": "",
+    "type": "address"
+  }],
+  "stateMutability": "view",
+  "type": "function"
+}, {
+  "inputs": [],
+  "name": "MAXIMUM_REFERRAL_COMMISSION_RATE",
+  "outputs": [{
+    "internalType": "uint16",
+    "name": "",
+    "type": "uint16"
+  }],
+  "stateMutability": "view",
+  "type": "function"
+}, {
+  "inputs": [],
+  "name": "baseRate",
+  "outputs": [{
+    "internalType": "uint256",
+    "name": "",
+    "type": "uint256"
+  }],
+  "stateMutability": "view",
+  "type": "function"
+}, {
+  "inputs": [],
+  "name": "blackHole",
+  "outputs": [{
+    "internalType": "address",
+    "name": "",
+    "type": "address"
+  }],
+  "stateMutability": "view",
+  "type": "function"
+}, {
+  "inputs": [],
+  "name": "dayRate",
+  "outputs": [{
+    "internalType": "uint256",
+    "name": "",
+    "type": "uint256"
+  }],
+  "stateMutability": "view",
+  "type": "function"
+}, {
+  "inputs": [{
+    "internalType": "uint256",
+    "name": "_amount",
+    "type": "uint256"
+  }, {
+    "internalType": "address",
+    "name": "_referrer",
+    "type": "address"
+  }],
+  "name": "deposit",
+  "outputs": [],
+  "stateMutability": "nonpayable",
+  "type": "function"
+}, {
+  "inputs": [],
+  "name": "depositFeeBP",
+  "outputs": [{
+    "internalType": "uint16",
+    "name": "",
+    "type": "uint16"
+  }],
+  "stateMutability": "view",
+  "type": "function"
+}, {
+  "inputs": [],
+  "name": "hourRate",
+  "outputs": [{
+    "internalType": "uint256",
+    "name": "",
+    "type": "uint256"
+  }],
+  "stateMutability": "view",
+  "type": "function"
+}, {
+  "inputs": [],
+  "name": "lpSupply",
+  "outputs": [{
+    "internalType": "uint256",
+    "name": "",
+    "type": "uint256"
+  }],
+  "stateMutability": "view",
+  "type": "function"
+}, {
+  "inputs": [],
+  "name": "minRate",
+  "outputs": [{
+    "internalType": "uint256",
+    "name": "",
+    "type": "uint256"
+  }],
+  "stateMutability": "view",
+  "type": "function"
+}, {
+  "inputs": [],
+  "name": "owner",
+  "outputs": [{
+    "internalType": "address",
+    "name": "",
+    "type": "address"
+  }],
+  "stateMutability": "view",
+  "type": "function"
+}, {
+  "inputs": [{
+    "internalType": "address",
+    "name": "_user",
+    "type": "address"
+  }],
+  "name": "pendingHera",
+  "outputs": [{
+    "internalType": "uint256",
+    "name": "",
+    "type": "uint256"
+  }],
+  "stateMutability": "view",
+  "type": "function"
+}, {
+  "inputs": [],
+  "name": "rateDecimal",
+  "outputs": [{
+    "internalType": "uint256",
+    "name": "",
+    "type": "uint256"
+  }],
+  "stateMutability": "view",
+  "type": "function"
+}, {
+  "inputs": [],
+  "name": "referral",
+  "outputs": [{
+    "internalType": "contract IReferral",
+    "name": "",
+    "type": "address"
+  }],
+  "stateMutability": "view",
+  "type": "function"
+}, {
+  "inputs": [],
+  "name": "referralCommissionRate",
+  "outputs": [{
+    "internalType": "uint16",
+    "name": "",
+    "type": "uint16"
+  }],
+  "stateMutability": "view",
+  "type": "function"
+}, {
+  "inputs": [],
+  "name": "renounceOwnership",
+  "outputs": [],
+  "stateMutability": "nonpayable",
+  "type": "function"
+}, {
+  "inputs": [{
+    "internalType": "uint16",
+    "name": "_depositFeeBP",
+    "type": "uint16"
+  }, {
+    "internalType": "uint16",
+    "name": "_withdrawFeeBP",
+    "type": "uint16"
+  }],
+  "name": "set",
+  "outputs": [],
+  "stateMutability": "nonpayable",
+  "type": "function"
+}, {
+  "inputs": [{
+    "internalType": "uint256",
+    "name": "_baseRate",
+    "type": "uint256"
+  }, {
+    "internalType": "uint256",
+    "name": "_minRate",
+    "type": "uint256"
+  }, {
+    "internalType": "uint256",
+    "name": "_hourRate",
+    "type": "uint256"
+  }, {
+    "internalType": "uint256",
+    "name": "_dayRate",
+    "type": "uint256"
+  }],
+  "name": "setRates",
+  "outputs": [],
+  "stateMutability": "nonpayable",
+  "type": "function"
+}, {
+  "inputs": [{
+    "internalType": "uint16",
+    "name": "_referralCommissionRate",
+    "type": "uint16"
+  }],
+  "name": "setReferralCommissionRate",
+  "outputs": [],
+  "stateMutability": "nonpayable",
+  "type": "function"
+}, {
+  "inputs": [],
+  "name": "startBlock",
+  "outputs": [{
+    "internalType": "uint256",
+    "name": "",
+    "type": "uint256"
+  }],
+  "stateMutability": "view",
+  "type": "function"
+}, {
+  "inputs": [{
+    "internalType": "address",
+    "name": "newOwner",
+    "type": "address"
+  }],
+  "name": "transferOwnership",
+  "outputs": [],
+  "stateMutability": "nonpayable",
+  "type": "function"
+}, {
+  "inputs": [{
+    "internalType": "uint256",
+    "name": "_newStartBlock",
+    "type": "uint256"
+  }],
+  "name": "updateStartBlock",
+  "outputs": [],
+  "stateMutability": "nonpayable",
+  "type": "function"
+}, {
+  "inputs": [{
+    "internalType": "address",
+    "name": "",
+    "type": "address"
+  }],
+  "name": "userInfo",
+  "outputs": [{
+    "internalType": "uint256",
+    "name": "amount",
+    "type": "uint256"
+  }, {
+    "internalType": "uint256",
+    "name": "lastRewardBlock",
+    "type": "uint256"
+  }],
+  "stateMutability": "view",
+  "type": "function"
+}, {
+  "inputs": [{
+    "internalType": "uint256",
+    "name": "_amount",
+    "type": "uint256"
+  }],
+  "name": "withdraw",
+  "outputs": [],
+  "stateMutability": "nonpayable",
+  "type": "function"
+}, {
+  "inputs": [],
+  "name": "withdrawFeeBP",
+  "outputs": [{
+    "internalType": "uint16",
+    "name": "",
+    "type": "uint16"
+  }],
+  "stateMutability": "view",
+  "type": "function"
+}]
