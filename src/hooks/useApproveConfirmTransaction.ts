@@ -114,6 +114,7 @@ const useApproveConfirmTransaction = ({
     hasConfirmFailed: state.confirmState === 'fail',
     handleApprove: async () => {
       try {
+        alert('handleApprove')
         const tx = await onApprove()
         dispatch({ type: 'approve_sending' })
         const receipt = await tx.wait()
@@ -127,6 +128,7 @@ const useApproveConfirmTransaction = ({
       }
     },
     handleConfirm: async (params = {}) => {
+      alert('handleConfirm')
       dispatch({ type: 'confirm_sending' })
       try {
         const tx = await onConfirm(params)

@@ -1,6 +1,5 @@
 import { useCallback } from 'react'
 import ethers, { Contract, CallOverrides } from 'ethers'
-import { useGasPrice } from 'state/user/hooks'
 import { get } from 'lodash'
 import { GAS_PRICE } from 'state/user/hooks/helpers';
 import { parseUnits } from 'ethers/lib/utils';
@@ -24,15 +23,20 @@ export function useCallWithGasPrice() {
       methodArgs: any[] = [],
       overrides: CallOverrides = null,
     ): Promise<ethers.providers.TransactionResponse> => {
-      const contractMethod = get(contract, methodName)
+      const contractMethod = get(contract, methodName); // replace it with wagmi??
       const hasManualGasPriceOverride = overrides?.gasPrice
+      console.log("check me ",contractMethod,hasManualGasPriceOverride, methodArgs)
+      try {
+        const tx = await contractMethod(
+          ...methodArgs,
+          hasManualGasPriceOverride ? { ...overrides } : { ...overrides, gasPrice },
+        )
 
-      const tx = await contractMethod(
-        ...methodArgs,
-        hasManualGasPriceOverride ? { ...overrides } : { ...overrides, gasPrice },
-      )
-
-      return tx
+        return tx
+      } catch (e) {
+        alert(e)
+        return null;
+      }
     },
     [gasPrice],
   )
